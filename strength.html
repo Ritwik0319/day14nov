@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Strength Checker</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        input[type="password"]:focus {
+            border-color: #007bff;
+            outline: none;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #weak, #medium, #strong {
+            margin-top: 10px;
+            padding: 10px;
+            font-weight: bold;
+            text-align: center;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        #weak {
+            color: #fff;
+            background-color: #ff4d4d;
+            display: none;
+        }
+
+        #medium {
+            color: #fff;
+            background-color: #ffcc00;
+            display: none;
+        }
+
+        #strong {
+            color: #fff;
+            background-color: #4caf50;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <input type="password" id="enterpass" placeholder="Enter your password">
+        <input type="password" id="reenterpass" placeholder="Re-enter your password">
+        <div id="weak">WEAK PASSWORD</div>
+        <div id="medium">MEDIUM PASSWORD</div>
+        <div id="strong">STRONG PASSWORD</div>
+        <button>Submit</button>
+    </form>
+
+    <script>
+        var inp1 = document.querySelector("#enterpass");
+        var inp2 = document.querySelector("#reenterpass");
+        var btn = document.querySelector("button");
+        var wek = document.querySelector("#weak");
+        var mdm = document.querySelector("#medium");
+        var str = document.querySelector("#strong");
+
+        btn.addEventListener("click", function (event) {
+            event.preventDefault()
+            if (inp1.value.length < 5 && inp2.value.length < 5) {
+                wek.style.display = "block"
+                mdm.style.display = "none"
+                str.style.display = "none"
+            }
+            else if (inp1.value.length < 8 && inp2.value.length < 8) {
+                mdm.style.display = "block"
+                wek.style.display = "none"
+                str.style.display = "none"
+            }
+            else {
+                str.style.display = "block"
+                wek.style.display = "none"
+                mdm.style.display = "none"
+            }
+        })
+    </script>
+</body>
+
+</html>

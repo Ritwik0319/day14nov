@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Validation</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(to right, #4facfe, #00f2fe);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background: #ffffff;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+
+        input[type="password"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin: 1rem 0;
+            border: 2px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        input[type="password"]:focus {
+            border-color: #4facfe;
+            outline: none;
+        }
+
+        button {
+            background: #4facfe;
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover {
+            background: #00c3ff;
+        }
+
+        #match {
+            color: #28a745;
+            font-size: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        #notmatch,
+        #empty {
+            color: #dc3545;
+            font-size: 1rem;
+            margin-top: 1rem;
+            display: none;
+        }
+
+        @media (max-width: 500px) {
+            form {
+                padding: 1.5rem;
+            }
+
+            input[type="password"] {
+                padding: 0.6rem;
+            }
+
+            button {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <h2 style="margin-bottom: 1.5rem; color: #333;">Password Validation</h2>
+        <input type="password" id="enterpass" placeholder="Enter your password"><br>
+        <input type="password" id="reenterpass" placeholder="Re-enter your password"><br>
+        <div id="match">Passwords match!</div>
+        <div id="notmatch">Passwords don't match!</div>
+        <div id="empty">Please enter Password</div>
+
+
+        <button>Submit</button>
+    </form>
+    <script>
+
+        var inp1 = document.querySelector("#enterpass");
+        var inp2 = document.querySelector("#reenterpass");
+        var btn = document.querySelector("button");
+        var passmatch = document.querySelector("#match");
+        var passnotmatch = document.querySelector("#notmatch");
+        var nopass = document.querySelector("#empty");
+
+
+        btn.addEventListener("click", function (event) {
+            event.preventDefault();
+            if (inp1.value === inp2.value && inp1.value !== "") {
+                passmatch.style.display = "block";
+                passnotmatch.style.display = "none";
+                nopass.style.display = "none"
+            }
+            else if (inp1.value = "" || inp2.value == "") {
+                nopass.style.display = "block"
+                passmatch.style.display = "none";
+                passnotmatch.style.display = "none";
+            }
+            else {
+                passnotmatch.style.display = "block";
+                passmatch.style.display = "none";
+                nopass.style.display = "none"
+            }
+        });
+
+    </script>
+</body>
+
+</html>
